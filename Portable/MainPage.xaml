@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Healthy_Body.Portable.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:common="clr-namespace:Telerik.XamarinForms.Common;assembly=Telerik.XamarinForms.Common"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:telerikGauges="clr-namespace:Telerik.XamarinForms.DataVisualization.Gauges;assembly=Telerik.XamarinForms.DataVisualization"
+    Title="Healthy Body"
+    mc:Ignorable="d">
+    <ContentPage.Resources>
+        <Color x:Key="PrussianBlue">#003459</Color>
+        <Color x:Key="CarolinaBlue">#00A8E8</Color>
+        <Color x:Key="RichBlack">#00171F</Color>
+
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="HorizontalOptions" Value="Start" />
+            <Setter Property="Margin" Value="0,10,0,10" />
+            <Setter Property="TextColor" Value="{StaticResource RichBlack}" />
+            <Setter Property="FontFamily" Value="Comfortaa" />
+        </Style>
+
+        <Style
+            x:Key="TitleStyle"
+            BasedOn="{StaticResource LabelStyle}"
+            TargetType="Label">
+            <Setter Property="FontSize" Value="Title" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,10,0,10" />
+
+        </Style>
+
+        <Style
+            x:Key="ValueStyle"
+            BasedOn="{StaticResource LabelStyle}"
+            TargetType="Label">
+            <Setter Property="Margin" Value="0,10,0,10" />
+
+            <Setter Property="FontSize" Value="Title" />
+            <Setter Property="HorizontalTextAlignment" Value="End" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="TextColor" Value="{StaticResource CarolinaBlue}" />
+        </Style>
+        <Style x:Key="CenterStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="Title" />
+            <Setter Property="Margin" Value="0,10,0,10" />
+
+            <Setter Property="TextColor" Value="{StaticResource RichBlack}" />
+            <Setter Property="HorizontalTextAlignment" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="FontAttributes" Value="Bold" />
+        </Style>
+        <Style x:Key="btnStyle" TargetType="Button">
+            <Setter Property="Margin" Value="0,10,0,10" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="FontSize" Value="Title" />
+            <Setter Property="TextColor" Value="{StaticResource RichBlack}" />
+        </Style>
+        <Style TargetType="Slider">
+            <Setter Property="VerticalOptions" Value="FillAndExpand" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="Margin" Value="0,0,0,10" />
+            <Setter Property="ThumbColor" Value="{StaticResource PrussianBlue}" />
+            <Setter Property="MinimumTrackColor" Value="{StaticResource PrussianBlue}" />
+            <Setter Property="MaximumTrackColor" Value="{StaticResource CarolinaBlue}" />
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            x:Name="aboutToolBarItem"
+            Clicked="AboutToolBarItem_OnClicked"
+            IconImageSource="about.png"
+            Text="About" />
+    </ContentPage.ToolbarItems>
+    <ScrollView>
+        <Grid
+            Padding="10,0,10,0"
+            ColumnDefinitions="2.3*,1*"
+            RowDefinitions="auto,auto,auto,auto,2*,auto,auto,auto">
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Style="{StaticResource TitleStyle}"
+                Text="Your tall ?" />
+            <Label
+                Grid.Row="0"
+                Grid.Column="1"
+                Style="{StaticResource ValueStyle}"
+                Text="{Binding Source={x:Reference HeightSlider}, Path=Value, StringFormat='{0:F0} cm'}" />
+            <Slider
+                x:Name="HeightSlider"
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Maximum="220"
+                Minimum="40"
+                Value="{Binding Height}" />
+
+            <Label
+                Grid.Row="2"
+                Grid.Column="0"
+                Style="{StaticResource TitleStyle}"
+                Text="Your weight?" />
+            <Label
+                Grid.Row="2"
+                Grid.Column="1"
+                Style="{StaticResource ValueStyle}"
+                Text="{Binding Source={x:Reference WeightSlider}, Path=Value, StringFormat='{0:F0} kg'}" />
+            <Slider
+                x:Name="WeightSlider"
+                Grid.Row="3"
+                Grid.ColumnSpan="2"
+                Maximum="300"
+                Minimum="0"
+                Value="{Binding Weight}" />
+
+            <telerikGauges:RadHorizontalGauge
+                x:Name="Gauge"
+                Grid.Row="4"
+                Grid.ColumnSpan="2"
+                Margin="0,20,0,20"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="CenterAndExpand">
+                <telerikGauges:RadHorizontalGauge.Axis>
+                    <telerikGauges:GaugeLinearAxis
+                        Maximum="40"
+                        Minimum="0"
+                        Step="5" />
+                </telerikGauges:RadHorizontalGauge.Axis>
+                <telerikGauges:RadHorizontalGauge.Indicators>
+                    <telerikGauges:GaugeShapeIndicator Position="Center" Value="{Binding Gauge}" />
+                </telerikGauges:RadHorizontalGauge.Indicators>
+                <telerikGauges:RadHorizontalGauge.Ranges>
+                    <telerikGauges:GaugeRangesDefinition>
+                        <telerikGauges:GaugeGradientRange From="0" To="18.5">
+                            <common:RadGradientStop Offset="0" Color="DarkBlue" />
+                            <common:RadGradientStop Offset="18.5" Color="LightBlue" />
+                        </telerikGauges:GaugeGradientRange>
+                        <telerikGauges:GaugeRange
+                            Color="Blue"
+                            From="18.5"
+                            To="25" />
+                        <telerikGauges:GaugeGradientRange From="25" To="40">
+                            <common:RadGradientStop Offset="25" Color="LightBlue" />
+                            <common:RadGradientStop Offset="40" Color="DarkBlue" />
+                        </telerikGauges:GaugeGradientRange>
+                    </telerikGauges:GaugeRangesDefinition>
+                </telerikGauges:RadHorizontalGauge.Ranges>
+            </telerikGauges:RadHorizontalGauge>
+
+
+            <Label
+                Grid.Row="5"
+                Grid.Column="0"
+                Style="{StaticResource TitleStyle}"
+                Text="Your BMI is:" />
+            <Label
+                Grid.Row="5"
+                Grid.Column="1"
+                Style="{StaticResource ValueStyle}"
+                Text="{Binding Bmi}" />
+            <Label
+                Grid.Row="6"
+                Grid.ColumnSpan="2"
+                Style="{StaticResource CenterStyle}"
+                Text="{Binding Classification}" />
+            <Button
+                x:Name="btnTips"
+                Grid.Row="7"
+                Grid.ColumnSpan="2"
+                Clicked="BtnTips_OnClicked"
+                CornerRadius="50"
+                Style="{StaticResource btnStyle}"
+                Text="{Binding Tips}" />
+
+        </Grid>
+    </ScrollView>
+</ContentPage>

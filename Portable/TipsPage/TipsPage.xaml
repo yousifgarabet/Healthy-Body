@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Healthy_Body.Portable.TipsPage.TipsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dataControls="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.XamarinForms.DataControls"
+    xmlns:listView="clr-namespace:Telerik.XamarinForms.DataControls.ListView;assembly=Telerik.XamarinForms.DataControls"
+    Title="Tips">
+    <Grid>
+        <dataControls:RadListView
+            x:Name="listView"
+            ItemTapped="ListView_OnItemTapped"
+            SelectionMode="None">
+            <dataControls:RadListView.ItemTemplate>
+                <DataTemplate>
+                    <listView:ListViewTemplateCell>
+                        <listView:ListViewTemplateCell.View>
+                            <Grid ColumnDefinitions="auto,auto" RowDefinitions="auto,auto">
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Margin="5,0,0,0"
+                                    FontAttributes="Bold"
+                                    FontSize="Title"
+                                    Text="{Binding TipsID}"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Margin="5"
+                                    FontAttributes="Bold"
+                                    FontSize="Large"
+                                    Text="{Binding TipsHeader}" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Margin="5"
+                                    FontSize="Medium"
+                                    IsVisible="{Binding ShowDetails}"
+                                    Text="{Binding TipsDetail}" />
+                            </Grid>
+                        </listView:ListViewTemplateCell.View>
+                    </listView:ListViewTemplateCell>
+                </DataTemplate>
+            </dataControls:RadListView.ItemTemplate>
+        </dataControls:RadListView>
+    </Grid>
+</ContentPage>

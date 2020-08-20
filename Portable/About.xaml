@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:PopupPage
+    x:Class="Healthy_Body.Portable.About"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="LightTextColor">#999999</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="150"
+            DurationOut="300"
+            HasBackgroundAnimation="True"
+            PositionIn="Bottom"
+            PositionOut="Top" />
+    </pages:PopupPage.Animation>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ScrollView Grid.Row="1" Background="GhostWhite">
+            <StackLayout
+                Padding="16,10,10,10"
+                Orientation="Vertical"
+                Spacing="10">
+                <Button
+                    x:Name="btnOK"
+                    Margin="0"
+                    Clicked="BtnOK_OnClicked"
+                    CornerRadius="50"
+                    FontSize="Title"
+                    HeightRequest="50"
+                    HorizontalOptions="End"
+                    Text="X"
+                    TextTransform="Uppercase"
+                    VerticalOptions="Center"
+                    WidthRequest="50" />
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span
+                                    FontAttributes="Bold"
+                                    FontSize="44"
+                                    Text="Healthy Body" />
+                                <Span Text=" " />
+                                <Span ForegroundColor="{StaticResource LightTextColor}" Text="v2.2" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label FontSize="Large">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Healthy Body will give you the full report about your best weight for your healthy body in addition, it will give you" />
+                                <Span Text=" " />
+                                <Span
+                                    FontAttributes="Bold"
+                                    FontSize="Large"
+                                    Text="tips for losing, keeping and getting weight" />
+                                <Span Text="." />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label FontSize="Large">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Design and Programming by:" />
+                                <Span Text=" " />
+                                <Span
+                                    FontAttributes="Bold"
+                                    FontSize="Title"
+                                    Text="Yousif Garabet" />
+                                <Span Text="." />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label FontSize="Large">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span
+                                    FontAttributes="Bold"
+                                    FontSize="Large"
+                                    Text="I have MSc. in Computer Science / Artificial Intelligence. and I have taught programming lectures in University of Zakho and Zakho Polytechnic" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label FontSize="Large">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="If you have any Question, or if you want to order an Android or iOS app? kindly" />
+                                <Span Text=" " />
+                                <Span
+                                    FontAttributes="Bold"
+                                    FontSize="Medium"
+                                    Text="Send us an email" />
+                                <Span Text="." />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Button
+                    x:Name="btnSendEmail"
+                    Margin="0,10,0,0"
+                    Clicked="BtnSendEmail_OnClicked"
+                    CornerRadius="100"
+                    FontSize="Title"
+                    Text="Send an Email"
+                    TextColor="Black" />
+
+
+
+
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+
+</pages:PopupPage>
